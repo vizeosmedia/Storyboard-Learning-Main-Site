@@ -1,0 +1,58 @@
+@mixin link {
+  position: relative;
+  color: $red;
+  font-family: $font;
+  font-weight: 300;
+  cursor: pointer;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  text-decoration: none !important;
+  background-color: transparent;
+
+  @media (min-width: $sm) {
+    line-height: 1.888;
+  }
+}
+
+@mixin default-link-effect {
+  @include animation-hover-apply;
+  @include animation-hover-apply-style('body');
+  @include animation-hover-apply-color($red);
+
+  &:hover {
+    background-size: 100% 2px;
+  }
+}
+
+@mixin default-link-effect-white {
+  @include animation-hover-apply;
+  @include animation-hover-apply-style('body');
+  @include animation-hover-apply-color($white);
+
+  &:hover {
+    background-size: 100% 2px;
+  }
+}
+
+.link {
+  @include link;
+  @include default-link-effect;
+}
+
+.contains-link-white {
+  a {
+    @include link;
+    @include default-link-effect-white;
+    color: $white;
+
+    &:before {
+      background-color: $white;
+    }
+  }
+
+  p {
+    @media (min-width: $lg) {
+      text-align: left !important;
+    }
+  }
+}
